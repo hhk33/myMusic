@@ -1,13 +1,20 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "@/App";
+import { Provider } from "react-redux";
 import "normalize.css";
-import { HashRouter } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+
+import App from "@/App";
+import store from "./store";
+import "@/assets/css/reset.less";
+import theme from "@/assets/theme/index";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </StrictMode>
 );
