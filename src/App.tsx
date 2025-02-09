@@ -1,7 +1,8 @@
 import React, { Suspense } from "react";
 import type { FC } from "react";
+import { useRoutes } from "react-router-dom";
 
-import Router from "@/router/index";
+import routes from "@/router/index";
 import Container from "@/components/contianer";
 import Menu from "@/components/menu";
 import Player from "@/components/palyer";
@@ -11,9 +12,7 @@ const App: FC = () => {
     <div>
       <Container>
         <Menu />
-        <Suspense fallback="">
-          <Router />
-        </Suspense>
+        <Suspense fallback="">{useRoutes(routes)}</Suspense>
       </Container>
       <Player />
     </div>

@@ -1,75 +1,70 @@
 import React, { lazy } from "react";
-import {
-  Navigate,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
 
-const Discover = lazy(() => import("@/views/discover/discover"));
-const Mine = lazy(() => import("@/views/mine/mine"));
 const Download = lazy(() => import("@/views/download/download"));
-const Recommend = lazy(
-  () => import("@/views/discover/c-views/recommend/recommend")
-);
-
-const Ranking = lazy(() => import("@/views/discover/c-views/ranking/ranking"));
-const SongList = lazy(
-  () => import("@/views/discover/c-views/song-list/song-list")
-);
-const Artist = lazy(() => import("@/views/discover/c-views/artist/artist"));
-const DjRadio = lazy(
-  () => import("@/views/discover/c-views/dj-radio/dj-radio")
-);
+const Recommend = lazy(() => import("@/views/recommend/recommend"));
+const Selected = lazy(() => import("@/views/selected/index"));
 
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/discover" />,
+    element: <Navigate to="/recommend" />,
   },
   {
-    path: "/discover",
-    element: <Discover />,
+    path: "/recommend",
+    element: <Recommend />,
+  },
+  {
+    path: "/selected",
+    element: <Selected />,
     children: [
       {
-        path: "/discover",
-        element: <Navigate to="/discover/recommend" />,
+        path: "/selected",
+        element: <Navigate to="/selected/cherry-picks" />,
       },
       {
-        path: "/discover/recommend",
+        path: "/selected/cherry-picks",
         element: <Recommend />,
       },
       {
-        path: "/discover/ranking",
-        element: <Ranking />,
+        path: "/selected/list-square",
+        element: <Recommend />,
       },
       {
-        path: "/discover/songs",
-        element: <SongList />,
+        path: "/selected/charts",
+        element: <Recommend />,
       },
       {
-        path: "/discover/singer",
-        element: <Artist />,
-      },
-      {
-        path: "/discover/djradio",
-        element: <DjRadio />,
+        path: "/selected/artists",
+        element: <Recommend />,
       },
     ],
   },
   {
-    path: "/mine",
-    element: <Mine />,
+    path: "/roam",
+    element: <Recommend />,
+  },
+  {
+    path: "/follow",
+    element: <Recommend />,
+  },
+  {
+    path: "/like",
+    element: <Recommend />,
+  },
+  {
+    path: "/recent",
+    element: <Recommend />,
   },
   {
     path: "/download",
     element: <Download />,
   },
+  {
+    path: "/local",
+    element: <Recommend />,
+  },
 ];
 
-const router = createBrowserRouter(routes);
-const Router = () => {
-  return <RouterProvider router={router} />;
-};
-
-export default Router;
+export default routes;

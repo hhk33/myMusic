@@ -5,12 +5,12 @@ interface IProps {
   children?: ReactNode;
 }
 
-const Singer: FC<IProps> = () => {
+const Recommend: FC<IProps> = () => {
   return (
     <div>
-        <h1>singer</h1>
+      <h1>Recommend</h1>
     </div>
   );
 };
 
-export default Singer;
+export default Recommend;
